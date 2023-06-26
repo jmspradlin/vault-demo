@@ -1,7 +1,7 @@
 policy = {
   readpolicies = {
     name = "read-policy"
-    policy = {
+    rule = {
       rule1 = {
         path         = "sys/policy"
         capabilities = ["read", "list"]

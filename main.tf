@@ -7,7 +7,7 @@ resource "vault_policy" "read_policy" {
 data "vault_policy_document" "this" {
   for_each = var.policy
   dynamic "rule" {
-    for_each = each.value.policy[*].policy
+    for_each = each.value.rule
     content {
       path         = rule.value.path
       capabilities = rule.value.capabilities
