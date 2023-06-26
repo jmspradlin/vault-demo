@@ -1,17 +1,17 @@
 resource "vault_policy" "read_policy" {
-  name = "read-policy"
-
-  policy = <<EOT
-path "sys/policy" {
-  capabilities = ["read", "list"]
+  for_each = var.policy
+  name     = each.value.name
+  policy   = data.vault_policy_document.this[each.key].hcl
 }
 
-path "sys/policy/*" {
-  capabilities = ["read", "list"]
-}
-
-path "sys/policies/acl/*" {
-  "capabilities" = ["read", "list"]
-}
-EOT
+data "vault_policy_document" "this" {
+  for_each = var.policy
+  dynamic "rule" {
+    for_each = each.value.policy[each.key].policy
+    content {
+      path         = each.value.path
+      capabilities = each.value.capabilities
+      description  = each.value.description
+    }
+  }
 }
