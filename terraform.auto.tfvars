@@ -33,8 +33,8 @@ policy = {
     name = "create-kv-policy"
     rule = {
       rule1 = {
-        path         = "secret/kv/*"
-        capabilities = ["create","read", "list", "write"]
+        path         = "secret/kv"
+        capabilities = ["create","read", "update", "list", "write"]
         description  = "Everything Except Delete"
       }
     }
@@ -43,8 +43,8 @@ policy = {
     name = "create-aws-policy"
     rule = {
       rule1 = {
-        path         = "secrets/aws/*"
-        capabilities = ["create","read", "list", "write"]
+        path         = "secret/aws"
+        capabilities = ["create","read", "update", "list", "write"]
         description  = "Everything Except Delete"
       }
     }
