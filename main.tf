@@ -1,4 +1,4 @@
-resource "vault_policy" "read_policy" {
+resource "vault_policy" "this" {
   for_each = var.policy
   name     = "tf-${each.value.name}"
   policy   = data.vault_policy_document.this[each.key].hcl
