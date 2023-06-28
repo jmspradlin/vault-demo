@@ -20,7 +20,7 @@ policy = {
     }
   }
   readkv = {
-    name = "read-kv-policy"
+    name = "read-kv"
     rule = {
       rule1 = {
         path         = "secret/kv/*"
@@ -30,7 +30,7 @@ policy = {
     }
   }
   createkv = {
-    name = "create-kv-policy"
+    name = "create-kv"
     rule = {
       rule1 = {
         path         = "secret/kv"
@@ -40,7 +40,7 @@ policy = {
     }
   }
   createaws = {
-    name = "create-aws-policy"
+    name = "create-aws"
     rule = {
       rule1 = {
         path         = "secret/aws"
