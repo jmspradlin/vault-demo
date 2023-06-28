@@ -34,7 +34,7 @@ policy = {
     rule = {
       rule1 = {
         path         = "secret/kv"
-        capabilities = ["create","read", "update", "list", "write"]
+        capabilities = ["create","read", "update", "list"]
         description  = "Everything Except Delete"
       }
     }
@@ -44,7 +44,7 @@ policy = {
     rule = {
       rule1 = {
         path         = "secret/aws"
-        capabilities = ["create","read", "update", "list", "write"]
+        capabilities = ["create","read", "update", "list"]
         description  = "Everything Except Delete"
       }
     }
