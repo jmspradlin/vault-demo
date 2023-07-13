@@ -11,7 +11,7 @@ terraform {
     organization = "jeff-spradlin-org"
 
     workspaces {
-      name = "vault-demo-adopt"
+      name = "vault-demo-boundary"
     }
   }
 }

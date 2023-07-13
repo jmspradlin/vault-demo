@@ -1,51 +1,11 @@
-policy = {
-  readpolicies = {
-    name = "read-policy"
+boundary_policy = {
+  oidc = {
+    name = "oidc-auth"
     rule = {
       rule1 = {
-        path         = "sys/policy"
-        capabilities = ["read", "list"]
-        description  = "Root Read/List"
-      }
-      rule2 = {
-        path         = "sys/policy/*"
-        capabilities = ["read", "list"]
-        description  = "Child Read/List"
-      }
-      rule3 = {
-        path         = "sys/policies/acl/*"
-        capabilities = ["read", "list"]
-        description  = "ACL permissions"
-      }
-    }
-  }
-  readkv = {
-    name = "read-kv"
-    rule = {
-      rule1 = {
-        path         = "secret/kv/*"
-        capabilities = ["read", "list"]
-        description  = "Read KV policy"
-      }
-    }
-  }
-  createkv = {
-    name = "create-kv"
-    rule = {
-      rule1 = {
-        path         = "secret/kv"
-        capabilities = ["create","read", "update", "list"]
-        description  = "Everything Except Delete"
-      }
-    }
-  }
-  createaws = {
-    name = "create-aws"
-    rule = {
-      rule1 = {
-        path         = "secret/aws"
-        capabilities = ["create","read", "update", "list"]
-        description  = "Everything Except Delete"
+        path         = "identity/oidc/provider/my-provider/authorize"
+        capabilities = ["read"]
+        description  = "OIDC policy granting the user read capabilities on the authorization endpoint."
       }
     }
   }
