@@ -25,8 +25,8 @@ resource "vault_generic_endpoint" "end_user" {
   ignore_absent_fields = true
   data_json = <<EOT
 {
-  "policies": [${var.boundary_policy.name}],
-  "password": ${random_password.password.result},
+  "policies": [var.boundary_policy.name],
+  "password": random_password.password.result,
   "token_ttl": "1h"
 }
 EOT
