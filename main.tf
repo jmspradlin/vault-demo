@@ -5,15 +5,13 @@ resource "random_password" "password" {
 }
 
 resource "vault_policy" "boundary" {
-  for_each = var.boundary_policy
-  name     = "boundary-${each.value.name}"
-  policy   = data.vault_policy_document.boundary[each.key].hcl
+  name     = "boundary-${var.boundary_policy.name}"
+  policy   = data.vault_policy_document.boundary.hcl
 }
 
 data "vault_policy_document" "boundary" {
-  for_each = var.boundary_policy
   dynamic "rule" {
-    for_each = each.value.rule
+    for_each = var.boundary_policy.rule
     content {
       path         = rule.value.path
       capabilities = rule.value.capabilities
@@ -27,8 +25,8 @@ resource "vault_generic_endpoint" "end_user" {
   ignore_absent_fields = true
   data_json = <<EOT
 {
-  "policies": [vault_policy.boundary],
-  "password": random_password.password.result,
+  "policies": [${var.boundary_policy.name}],
+  "password": ${random_password.password.result},
   "token_ttl": "1h"
 }
 EOT
