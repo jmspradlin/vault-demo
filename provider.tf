@@ -1,5 +1,5 @@
 provider "vault" {
-  skip_child_token = true
+  #skip_child_token = true
   # auth_login {
   #   path      = "auth/approle/login"
   #   namespace = "admin"
