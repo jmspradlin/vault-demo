@@ -91,7 +91,7 @@ resource "vault_identity_oidc_scope" "users" {
   name = "user"
   template = jsonencode(
     {
-      username = "{{identity.entity.name}}"
+      "username" = "{{identity.entity.name}}",
     }
   )
   description = "The user scope provides claims using Vault identity entity metadata"
