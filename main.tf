@@ -102,7 +102,15 @@ resource "vault_identity_oidc_scope" "groups" {
   )
   description = "The groups scope provides the groups claim using Vault group membership."
 }
-# contact = [{
-#         email        = "{{identity.entity.metadata.email}}",
-#         phone_number = "{{identity.entity.metadata.phone_number}}",
-#       }]
+
+resource "vault_identity_oidc_provider" "this" {
+  name = "my-provider"
+  issuer_host = var.vault_addr
+  allowed_client_ids = [
+    vault_identity_oidc_client.boundary.client_id
+  ]
+  scopes_supported = [
+    vault_identity_oidc_scope.users.name,
+    vault_identity_oidc_scope.groups.name,
+  ]
+}
