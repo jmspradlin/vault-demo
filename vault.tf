@@ -117,6 +117,6 @@ data "vault_kv_secret" "boundary_auth" {
 }
 
 output "secret_01" {
-    value = jsondecode(data.vault_kv_secret.boundary_auth.data.data)
+    value = jsondecode(data.vault_kv_secret.boundary_auth.data.data).password_auth_method_login_name
     sensitive = true
 }
