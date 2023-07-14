@@ -117,6 +117,6 @@ data "vault_kv_secret" "boundary_auth" {
 }
 
 output "secret_01" {
-    value = data.vault_kv_secret.boundary_auth.data.password_auth_method_login_name
+    value = data.vault_kv_secret.boundary_auth.data.data
     sensitive = true
 }
