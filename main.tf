@@ -89,24 +89,20 @@ resource "vault_identity_oidc_client" "boundary" {
 
 resource "vault_identity_oidc_scope" "users" {
   name = "user"
-  template    = jsonencode(
-  {
-    username = "{{identity.entity.name}}",
-  }
+  template = jsonencode(
+    {
+      username = "{{identity.entity.name}}",
+    }
   )
-    # "contact" = [{
-    #   "email"        = "{{identity.entity.metadata.email}}",
-    #   "phone_number" = "{{identity.entity.metadata.phone_number}}",
-    # }]
   description = "The user scope provides claims using Vault identity entity metadata"
 }
 
 resource "vault_identity_oidc_scope" "groups" {
-  name        = "groups"
-  template    = jsonencode(
-  {
-    groups = "{{identity.entity.groups.names}}",
-  }
+  name = "groups"
+  template = jsonencode(
+    {
+      groups = "{{identity.entity.groups.names}}",
+    }
   )
   description = "The groups scope provides the groups claim using Vault group membership."
 }
