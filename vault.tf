@@ -117,6 +117,6 @@ data "vault_kv_secret" "boundary_auth" {
 }
 
 output "secret_01" {
-    value = data.vault_kv_secret.boundary_auth.data.data
+    value = data.vault_kv_secret.boundary_auth.data_json
     sensitive = true
 }
