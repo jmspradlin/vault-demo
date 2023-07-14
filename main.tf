@@ -88,8 +88,8 @@ resource "vault_identity_oidc_client" "boundary" {
 }
 
 resource "vault_identity_oidc_scope" "users" {
-  name = "user"
-  template = "{\"username\":{{identity.entity.name}}",
+  name        = "user"
+  template    = file("user_scope.json")
   description = "The user scope provides claims using Vault identity entity metadata"
 }
 
