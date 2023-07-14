@@ -101,7 +101,7 @@ resource "vault_identity_oidc_scope" "groups" {
   name = "groups"
   template = jsonencode(
     {
-      groups = "{{identity.entity.groups.names}}",
+      username = "{{identity.entity.groups.names}}",
     }
   )
   description = "The groups scope provides the groups claim using Vault group membership."
