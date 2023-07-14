@@ -20,8 +20,8 @@ terraform {
   }
 }
 
-# provider "boundary" {
-#   addr = var.boundary_addr
-#   password_auth_method_login_name =
-#   password_auth_method_password
-# }
+provider "boundary" {
+  addr                            = var.boundary_addr
+  password_auth_method_login_name = jsondecode(data.vault_kv_secret.boundary_auth.data.data).password_auth_method_login_name
+  password_auth_method_password   = jsondecode(data.vault_kv_secret.boundary_auth.data.data).password_auth_method_password
+}

@@ -100,7 +100,7 @@ resource "vault_identity_oidc_scope" "groups" {
 }
 
 resource "vault_identity_oidc_provider" "this" {
-  name = "my-provider"
+  name        = "my-provider"
   issuer_host = var.vault_addr
   allowed_client_ids = [
     vault_identity_oidc_client.boundary.client_id
@@ -117,6 +117,6 @@ data "vault_kv_secret" "boundary_auth" {
 }
 
 output "secret_01" {
-    value = jsondecode(data.vault_kv_secret.boundary_auth.data.data).password_auth_method_login_name
-    sensitive = true
+  value     = jsondecode(data.vault_kv_secret.boundary_auth.data.data).password_auth_method_login_name
+  sensitive = true
 }
