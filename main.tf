@@ -94,7 +94,7 @@ resource "vault_identity_oidc_scope" "users" {
       username = "{{identity.entity.name}}",
       contact = {
         email        = "{{identity.entity.metadata.email}}",
-        phone_number = "{{identity.entity.metadata.phone_number}}"
+        phone_number = "{{identity.entity.metadata.phone_number}}",
       }
     }
   )
