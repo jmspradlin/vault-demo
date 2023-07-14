@@ -87,15 +87,15 @@ resource "vault_identity_oidc_client" "boundary" {
   key              = vault_identity_oidc_key.engineering.id
 }
 
-resource "vault_identity_oidc_scope" "users" {
-  name = "user"
-  template = jsonencode(
-    {
-      username = "{{identity.entity.name}}",
-    }
-  )
-  description = "The user scope provides claims using Vault identity entity metadata"
-}
+# resource "vault_identity_oidc_scope" "users" {
+#   name = "user"
+#   template = jsonencode(
+#     {
+#       username = "{{identity.entity.name}}",
+#     }
+#   )
+#   description = "The user scope provides claims using Vault identity entity metadata"
+# }
 
 resource "vault_identity_oidc_scope" "groups" {
   name = "groups"
