@@ -116,7 +116,6 @@ data "vault_kv_secret" "boundary_auth" {
   path = "kv/data/boundary-auth"
 }
 
-output "secret_01" {
-  value     = jsondecode(data.vault_kv_secret.boundary_auth.data.data).password_auth_method_login_name
-  sensitive = true
+data "vault_identity_oidc_client_creds" "boundary" {
+  name = vault_identity_oidc_client.boundary.name
 }
