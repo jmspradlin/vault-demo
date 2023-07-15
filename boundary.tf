@@ -10,3 +10,8 @@ resource "boundary_auth_method_oidc" "this" {
   name               = "Vault OIDC Provider"
   state              = "active-public"
 }
+
+resource "boundary_auth_method" "oidc" {
+    scope_id = var.boundary_scope_id
+    type = "oidc"
+}
