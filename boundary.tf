@@ -8,4 +8,5 @@ resource "boundary_auth_method_oidc" "this" {
   claims_scopes      = ["groups", "user"]
   max_age            = 20
   name               = "Vault OIDC Provider"
+  state              = "active-public"
 }
