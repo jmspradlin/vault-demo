@@ -35,6 +35,10 @@ resource "vault_generic_endpoint" "end_user" {
 }
 resource "vault_identity_entity" "end_user" {
   name = "end-user"
+  metadata = {
+    email = "vault@hashicorp.com"
+    phone_number = "123-456-7890"
+  }
 }
 resource "vault_identity_group" "engineering" {
   name = "engineering"
