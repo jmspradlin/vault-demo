@@ -29,7 +29,7 @@ resource "vault_generic_endpoint" "end_user" {
   ignore_absent_fields = true
   data_json = jsonencode({
     "policies"  = "boundary-${var.boundary_policy.name}",
-    "password"  = "${random_password.password.result}",
+    "password"  = "pasWorth761!",
     "token_ttl" = "1h"
   })
 }
