@@ -22,6 +22,7 @@ terraform {
 
 provider "boundary" {
   addr                   = var.boundary_addr
+  auth_method_id         = var.boundary_auth_method_id
   auth_method_login_name = jsondecode(data.vault_kv_secret.boundary_auth.data.data).password_auth_method_login_name
   auth_method_password   = jsondecode(data.vault_kv_secret.boundary_auth.data.data).password_auth_method_password
 }
