@@ -1,5 +1,5 @@
 resource "boundary_auth_method_oidc" "this" {
-  scope_id           = var.boundary_scope_id
+  scope_id           = "Global" #var.boundary_scope_id
   issuer             = vault_identity_oidc_provider.this.issuer
   client_id          = data.vault_identity_oidc_client_creds.boundary.client_id
   client_secret      = data.vault_identity_oidc_client_creds.boundary.client_secret
