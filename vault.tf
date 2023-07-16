@@ -36,7 +36,7 @@ resource "vault_generic_endpoint" "end_user" {
 resource "vault_identity_entity" "end_user" {
   name = "end-user"
   metadata = {
-    email = "vault@hashicorp.com"
+    email        = "vault@hashicorp.com"
     phone_number = "123-456-7890"
   }
 }
@@ -123,5 +123,6 @@ data "vault_identity_oidc_client_creds" "boundary" {
 }
 
 output "end_user_cred" {
-  value = random_password.password.result
+  value     = random_password.password.result
+  sensitive = true
 }
