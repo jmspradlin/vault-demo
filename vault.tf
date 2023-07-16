@@ -29,7 +29,7 @@ resource "vault_generic_endpoint" "end_user" {
   ignore_absent_fields = true
   data_json = jsonencode({
     "policies"  = "boundary-${var.boundary_policy.name}",
-    "password"  = "pasWorth761!",
+    "password"  = random_password.password.result
     "token_ttl" = "1h"
   })
 }
@@ -75,9 +75,7 @@ resource "vault_identity_oidc_key" "engineering" {
 resource "vault_identity_oidc_client" "boundary" {
   name = "boundary"
   redirect_uris = [
-    "https://01c6c932-2742-4960-86b9-e5070a67d6cc.boundary.hashicorp.cloud:9200/v1/auth-methods/oidc:authenticate:callback",
-    "https://01c6c932-2742-4960-86b9-e5070a67d6cc.boundary.hashicorp.cloud:8251/callback",
-    "https://01c6c932-2742-4960-86b9-e5070a67d6cc.boundary.hashicorp.cloud:8080/callback"
+    "https://01c6c932-2742-4960-86b9-e5070a67d6cc.boundary.hashicorp.cloud/v1/auth-methods/oidc:authenticate:callback"
   ]
   assignments = [
     vault_identity_oidc_assignment.engineering.name
@@ -122,4 +120,8 @@ data "vault_kv_secret" "boundary_auth" {
 
 data "vault_identity_oidc_client_creds" "boundary" {
   name = vault_identity_oidc_client.boundary.name
+}
+
+output "end_user_cred" {
+  value = random_password.password.result
 }
